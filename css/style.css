@@ -1,0 +1,45 @@
+body {
+    background: #F9FAF6;
+    margin: 0px;
+    padding: 0px;
+    color: #000000;
+    font-family: verdana,sans-serif;
+    font-size: 10px;
+}
+a {
+    font-weight: bold;
+    color: #018C01;
+}
+form {
+    margin: 0;
+}
+input[type="text"] {
+    margin-bottom: 0px;
+}
+textarea[readonly="readonly"] {
+    cursor: default;
+}
+textarea {
+    min-width: 735px;
+    max-width: 735px;
+    height: 180px;
+}
+#content {
+    border: 1px solid silver;
+    background: #ffffff;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top: 50px;
+    width:905px;
+    padding: 20px 20px 20px 20px;
+}
+.field_name {
+    width: 150px;
+    display: inline-block;
+}
+.tab-content {
+    margin-top: 20px;
+}
+.field-wrapper {
+    margin-bottom: 15px;
+}
