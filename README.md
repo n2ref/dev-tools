@@ -1,13 +1,13 @@
 PHP Tools
 =============
 
-A very simple web application to integrate web developer tools.
+A very simple web application for integrate web developer tools.
 
 
 ![Interface](http://oi57.tinypic.com/2lixyrr.jpg)
 
 
-## Tools in the standard assembly
+## Tools from the standard assembly
 - Php obfuscator
 - Base64 encoder/decoder
 
