@@ -1,0 +1,63 @@
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#obfuscate a.text').tab('show');
+        $('#obfuscate a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    });
+</script>
+
+<div>
+    <ul class="nav nav-tabs" id="obfuscate">
+        <li><a class="text" href="#text">Text</a></li>
+        <li><a class="file" href="#file">File</a></li>
+    </ul>
+
+    <div class="tab-content" style="margin-top: 15px">
+        <div class="tab-pane" id="text">
+            <form action="" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="php_code" class="col-sm-2 control-label">PHP code</label>
+                    <div class="col-sm-10">
+                        <textarea id="php_code" class="form-control" name="php_code"
+                                  style="min-height: 200px">[PHP_CODE]</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="form-group">
+                    <label for="php_code" class="col-sm-2 control-label">Result</label>
+                    <div class="col-sm-10">
+                        <pre style="min-height: 50px;max-height: 500px;">[OBFUSCATE_CODE]</pre>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="tab-pane" id="file">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group">
+                    <label for="php_code" class="col-sm-3 control-label">File with PHP code</label>
+                    <div class="col-sm-9">
+                        <input type="file" name="obfuscate_file"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
