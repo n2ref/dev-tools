@@ -1,7 +1,7 @@
 PHP Tools
 =============
 
-A very simple web application for integrate web developer tools.
+A very simple web application for integration web developer tools.
 
 
 ![Interface](http://oi57.tinypic.com/2lixyrr.jpg)
