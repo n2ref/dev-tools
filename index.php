@@ -19,8 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @author: Shabunin Igor
- * @email: shabuninil24@gmail.com
- * @see: https://github.com/shinji00/php-obfuscate
+ * @see: https://github.com/shinji00/php-tools
  */
 
 require_once 'classes/Init.php';
