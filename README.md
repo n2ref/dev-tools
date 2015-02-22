@@ -2,7 +2,8 @@ PHP Tools
 =============
 
 A very simple web application to integrate web developer tools.
-Replacement obfuscator on application tools
+
+
 ![Interface](http://oi57.tinypic.com/2lixyrr.jpg)
 
 
