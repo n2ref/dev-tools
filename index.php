@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Tools - a very simple web application to integrate web developer tools.
+ * Dev Tools - a very simple web application to integrate web developer tools.
  *
  * Copyright (C) 2014  Shabunin Igor
  *
@@ -19,7 +19,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @author: Shabunin Igor
- * @see: https://github.com/shinji00/php-tools
+ * @see: https://github.com/shinji00/dev-tools
+ * @see: http://dev-tools.org
  */
 
 require_once 'classes/Init.php';

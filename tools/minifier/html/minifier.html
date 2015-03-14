@@ -1,0 +1,139 @@
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#minifier a._TYPE_CODE_').tab('show');
+        $('#minifier a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    });
+</script>
+
+<div>
+    <ul class="nav nav-tabs" id="minifier">
+        <li><a class="css" href="#css">css</a></li>
+        <li><a class="js" href="#js">js</a></li>
+        <li><a class="html" href="#html">html</a></li>
+    </ul>
+
+    <div class="tab-content" style="margin-top: 15px">
+        <div class="tab-pane" id="css">
+            <form action="" method="post" class="form-horizontal">
+                <input type="hidden" name="type_code" value="css"/>
+
+                <div class="form-group">
+                    <label for="css_code" class="col-sm-2 control-label">CSS code</label>
+                    <div class="col-sm-10">
+                        <textarea id="css_code" class="form-control" name="css_code"
+                                  style="min-height: 200px">[CSS_CODE]</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <!-- BEGIN css_statistic -->
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="help-block">
+                            Original: [original]b, minified: [minified]b <br/>
+                            The difference: [difference]b or [difference_percent]%
+                        </div>
+                    </div>
+                </div>
+                <!-- END css_statistic -->
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Result</label>
+                    <div class="col-sm-10">
+                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_CSS]</pre>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane" id="js">
+            <form action="" method="post" class="form-horizontal">
+                <input type="hidden" name="type_code" value="js"/>
+
+                <div class="form-group">
+                    <label for="js_code" class="col-sm-2 control-label">JS code</label>
+                    <div class="col-sm-10">
+                        <textarea id="js_code" class="form-control" name="js_code"
+                                  style="min-height: 200px">[JS_CODE]</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <!-- BEGIN js_statistic -->
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="help-block">
+                            Original: [original]b, minified: [minified]b <br/>
+                            The difference: [difference]b or [difference_percent]%
+                        </div>
+                    </div>
+                </div>
+                <!-- END js_statistic -->
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Result</label>
+                    <div class="col-sm-10">
+                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_JS]</pre>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="tab-pane" id="html">
+            <form action="" method="post" class="form-horizontal">
+                <input type="hidden" name="type_code" value="html"/>
+
+                <div class="form-group">
+                    <label for="HTML_code" class="col-sm-2 control-label">HTML code</label>
+                    <div class="col-sm-10">
+                        <textarea id="html_code" class="form-control" name="html_code"
+                                  style="min-height: 200px">[HTML_CODE]</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
+                <br/>
+
+                <!-- BEGIN html_statistic -->
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="help-block">
+                            Original: [original]b, minified: [minified]b <br/>
+                            The difference: [difference]b or [difference_percent]%
+                        </div>
+                    </div>
+                </div>
+                <!-- END html_statistic -->
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Result</label>
+                    <div class="col-sm-10">
+                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_HTML]</pre>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
