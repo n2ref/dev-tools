@@ -1,12 +1,5 @@
-<script type="application/javascript">
-    $(document).ready(function () {
-        $('#obfuscate a.text').tab('show');
-        $('#obfuscate a').click(function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-        });
-    });
-</script>
+<script type="application/javascript" src="tools/obfuscate/html/obfuscate.js"></script>
+<link rel="stylesheet" href="tools/obfuscate/html/style.css"/>
 
 <div>
     <ul class="nav nav-tabs" id="obfuscate">
@@ -36,7 +29,8 @@
                 <div class="form-group">
                     <label for="php_code" class="col-sm-2 control-label">Result</label>
                     <div class="col-sm-10">
-                        <pre style="min-height: 50px;max-height: 500px;">[OBFUSCATE_CODE]</pre>
+                        <span onclick="selectText('result');" class="btn-selected">Select</span>
+                        <pre id="result">[OBFUSCATE_CODE]</pre>
                     </div>
                 </div>
             </form>

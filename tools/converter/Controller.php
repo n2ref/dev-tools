@@ -101,6 +101,11 @@ class Controller extends Tool {
                 $tpl->setAttr('input[value="text_encoding"]', 'checked', 'checked');
                 break;
 
+            case 'ini_json':
+                $encoding_text_data = json_encode($this->parseIni($text_data));
+                $tpl->setAttr('input[value="ini_json"]', 'checked', 'checked');
+                break;
+
             default: $encoding_text_data = ''; break;
         }
 
@@ -109,5 +114,73 @@ class Controller extends Tool {
         $tpl->assign('[ENCODING_TEXT_DATA]', htmlspecialchars($encoding_text_data));
 
         return $tpl->render();
+    }
+
+
+    /**
+     * Parses INI file adding extends functionality via ":base" postfix on namespace.
+     * @param  string $string
+     * @return array
+     */
+    private function parseIni($string) {
+
+        $p_ini  = parse_ini_string($string, true);
+        $config = array();
+        foreach ($p_ini as $namespace => $properties) {
+            if (is_array($properties)) {
+                @list($name, $extends) = explode(':', $namespace);
+                $name    = trim($name);
+                $extends = trim($extends);
+                // create namespace if necessary
+                if ( ! isset($config[$name])) $config[$name] = array();
+                // inherit base namespace
+                if (isset($p_ini[$extends])) {
+                    foreach ($p_ini[$extends] as $key => $val) {
+                        $config[$name] = $this->processKey($config[$name], $key, $val);
+                    }
+                }
+                // overwrite / set current namespace values
+                foreach ($properties as $key => $val) {
+                    $config[$name] = $this->processKey($config[$name], $key, $val);
+                }
+            } else {
+                if (strpos($namespace, '.') === false) {
+                    $config[$namespace] = $properties;
+                } else {
+                    $config = $this->processKey($config, $namespace, $properties);
+                }
+            }
+        }
+
+        return $config;
+    }
+
+
+    /**
+     * Процесс разделения на субсекции ключей конфига
+     * @param array $config
+     * @param string $key
+     * @param string $val
+     * @return array
+     */
+    private function processKey($config, $key, $val) {
+        $nest_separator = '.';
+        if (strpos($key, $nest_separator) !== false) {
+            $pieces = explode($nest_separator, $key, 2);
+            if (strlen($pieces[0]) && strlen($pieces[1])) {
+                if ( ! isset($config[$pieces[0]])) {
+                    if ($pieces[0] === '0' && ! empty($config)) {
+                        // convert the current values in $config into an array
+                        $config = array($pieces[0] => $config);
+                    } else {
+                        $config[$pieces[0]] = array();
+                    }
+                }
+                $config[$pieces[0]] = $this->processKey($config[$pieces[0]], $pieces[1], $val);
+            }
+        } else {
+            $config[$key] = $val;
+        }
+        return $config;
     }
 }

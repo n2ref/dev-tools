@@ -7,6 +7,8 @@
         });
     });
 </script>
+<script src="tools/minifier/html/minifier.js" type="application/javascript"></script>
+<link rel="stylesheet" href="tools/minifier/html/style.css"/>
 
 <div>
     <ul class="nav nav-tabs" id="minifier">
@@ -50,7 +52,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Result</label>
                     <div class="col-sm-10">
-                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_CSS]</pre>
+                        <span onclick="selectText('result-css');" class="btn-selected">Select</span>
+                        <pre class="result" id="result-css">[MINIFY_CSS]</pre>
                     </div>
                 </div>
             </form>
@@ -90,7 +93,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Result</label>
                     <div class="col-sm-10">
-                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_JS]</pre>
+                        <span onclick="selectText('result-js');" class="btn-selected">Select</span>
+                        <pre class="result" id="result-js">[MINIFY_JS]</pre>
                     </div>
                 </div>
             </form>
@@ -130,7 +134,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Result</label>
                     <div class="col-sm-10">
-                        <pre style="min-height: 50px;max-height: 500px;">[MINIFY_HTML]</pre>
+                        <span onclick="selectText('result-html');" class="btn-selected">Select</span>
+                        <pre class="result" id="result-html">[MINIFY_HTML]</pre>
                     </div>
                 </div>
             </form>

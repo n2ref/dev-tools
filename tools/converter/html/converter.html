@@ -1,3 +1,6 @@
+<script src="tools/converter/html/converter.js" type="application/javascript"></script>
+<link rel="stylesheet" href="tools/converter/html/style.css"/>
+
 <form action="" method="post" class="form-horizontal">
     <div class="form-group">
         <label for="text_data" class="col-sm-2 control-label">Text</label>
@@ -29,6 +32,12 @@
                         Text &#8594; Base64
                     </label>
                 </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="method" value="ini_json"/>
+                        Ini &#8594; JSON
+                    </label>
+                </div>
             </div>
             <div class="col-md-7">
                 <div class="radio">
@@ -52,7 +61,8 @@
     <div class="form-group">
         <label for="text_data" class="col-sm-2 control-label">Result</label>
         <div class="col-sm-10">
-            <pre style="min-height: 50px">[ENCODING_TEXT_DATA]</pre>
+            <span onclick="selectText('result');" class="btn-selected">Select</span>
+            <pre id="result">[ENCODING_TEXT_DATA]</pre>
         </div>
     </div>
 </form>
