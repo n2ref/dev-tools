@@ -44,7 +44,7 @@ class Init {
             $tpl->assign('[CONTENT]', $ob . $content);
 
         } else {
-            $tpl->setAppendAttr('#menu:first-child li', 'class', 'active');
+            $tpl->assign('class="home', 'class="home active');
             $tpl->assign('[CONTENT]', file_get_contents(__DIR__ . '/../html/home.html'));
         }
 

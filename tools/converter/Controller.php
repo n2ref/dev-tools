@@ -74,36 +74,36 @@ class Controller extends Tool {
         $encoding_from = isset($_POST['encoding_from']) ? $_POST['encoding_from'] : '';
         $encoding_to   = isset($_POST['encoding_to']) ? $_POST['encoding_to'] : '';
 
-        $tpl->fillDropDown('#encoding_from', $this->encodings, $encoding_from);
-        $tpl->fillDropDown('#encoding_to',   $this->encodings, $encoding_to);
+        $tpl->fillDropDown('encoding_from', $this->encodings, $encoding_from);
+        $tpl->fillDropDown('encoding_to',   $this->encodings, $encoding_to);
 
 
         switch ($method) {
             case 'base64_text':
                 $encoding_text_data = base64_decode($text_data);
-                $tpl->setAttr('input[value="base64_text"]', 'checked', 'checked');
+                $tpl->assign('value="base64_text"', 'value="base64_text" checked="checked"');
                 break;
 
             case 'text_base64':
                 $encoding_text_data = base64_encode($text_data);
-                $tpl->setAttr('input[value="text_base64"]', 'checked', 'checked');
+                $tpl->assign('value="text_base64"', 'value="text_base64" checked="checked"');
                 break;
 
             case 'base64_unserialize_text':
                 ob_start();
                 print_r(unserialize(base64_decode($text_data)));
                 $encoding_text_data = ob_get_clean();
-                $tpl->setAttr('input[value="base64_unserialize_text"]', 'checked', 'checked');
+                $tpl->assign('value="base64_unserialize_text"', 'value="base64_unserialize_text" checked="checked"');
                 break;
 
             case 'text_encoding':
                 $encoding_text_data = iconv($encoding_from , $encoding_to, $text_data);
-                $tpl->setAttr('input[value="text_encoding"]', 'checked', 'checked');
+                $tpl->assign('value="text_encoding"', 'value="text_encoding" checked="checked"');
                 break;
 
             case 'ini_json':
                 $encoding_text_data = json_encode($this->parseIni($text_data));
-                $tpl->setAttr('input[value="ini_json"]', 'checked', 'checked');
+                $tpl->assign('value="ini_json"', 'value="ini_json" checked="checked"');
                 break;
 
             default: $encoding_text_data = ''; break;
