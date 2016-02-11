@@ -2,15 +2,15 @@
 /* CSS Document */
 .jf-ObjectBrace {
     color: #00AA00;
-    font-weight: bold;
+    font-weight: 500;
 }
 .jf-ArrayBrace {
     color: #0033FF;
-    font-weight: bold;
+    font-weight: 500;
 }
 .jf-PropertyName {
     color: #CC0000;
-    font-weight: bold;
+    font-weight: 500;
 }
 .jf-String {
     color: #007777;
@@ -26,7 +26,7 @@
 }
 .jf-Comma {
     color: #000000;
-    font-weight: bold;
+    font-weight: 500;
 }
 pre.jf-CodeContainer {
     margin-top: 0;
