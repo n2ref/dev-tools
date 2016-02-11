@@ -12,6 +12,7 @@ A very simple web application for integration web developer tools.
 ## Tools from the standard assembly
 - Php obfuscator
 - Converter
+- Formatter
 - Minifier
 
 ## Install
