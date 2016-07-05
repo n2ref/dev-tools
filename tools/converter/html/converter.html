@@ -45,8 +45,33 @@
                         <input type="radio" name="method" value="text_encoding"/>
                         Text encoding
                     </label>
-                    <select name="encoding_from" id="encoding_from" style="width:120px"></select> &#8594;
-                    <select name="encoding_to" id="encoding_to" style="width:120px"></select>
+                    <select name="encoding_from" id="encoding_from"></select> &#8594;
+                    <select name="encoding_to" id="encoding_to"></select>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="method" value="hash_encoding"/>
+                        Hash encoding
+                    </label>
+                    <select name="encoding_algo" id="encoding_algos"></select>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="method" value="url_encoding"/>
+                        URL encoding
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="method" value="url_decoding"/>
+                        URL decoding
+                    </label>
                 </div>
             </div>
         </div>

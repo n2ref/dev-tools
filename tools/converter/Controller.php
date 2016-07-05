@@ -64,18 +64,22 @@ class Controller extends Tool {
 
     public function index() {
 
-        $method    = isset($_POST['method']) ? $_POST['method'] : 'base64_text';
+        $method    = isset($_POST['method'])    ? $_POST['method']    : 'base64_text';
         $text_data = isset($_POST['text_data']) ? $_POST['text_data'] : '';
 
+        $hash_algos = hash_algos();
+        $hash_algos = array_combine($hash_algos, $hash_algos);
 
         $tpl = new Micro_Templater(__DIR__ . '/html/converter.html');
 
         // Encoding
         $encoding_from = isset($_POST['encoding_from']) ? $_POST['encoding_from'] : '';
-        $encoding_to   = isset($_POST['encoding_to']) ? $_POST['encoding_to'] : '';
+        $encoding_to   = isset($_POST['encoding_to'])   ? $_POST['encoding_to']   : '';
+        $encoding_algo = isset($_POST['encoding_algo']) ? $_POST['encoding_algo'] : '';
 
-        $tpl->fillDropDown('encoding_from', $this->encodings, $encoding_from);
-        $tpl->fillDropDown('encoding_to',   $this->encodings, $encoding_to);
+        $tpl->fillDropDown('encoding_from',  $this->encodings, $encoding_from);
+        $tpl->fillDropDown('encoding_to',    $this->encodings, $encoding_to);
+        $tpl->fillDropDown('encoding_algos', $hash_algos,      $encoding_algo);
 
 
         switch ($method) {
@@ -101,9 +105,28 @@ class Controller extends Tool {
                 $tpl->assign('value="text_encoding"', 'value="text_encoding" checked="checked"');
                 break;
 
+            case 'hash_encoding':
+                if (in_array($encoding_algo, hash_algos())) {
+                    $encoding_text_data = hash($encoding_algo, $text_data);
+                } else {
+                    $encoding_text_data = 'Unsupported algorithm';
+                }
+                $tpl->assign('value="hash_encoding"', 'value="hash_encoding" checked="checked"');
+                break;
+
             case 'ini_json':
                 $encoding_text_data = json_encode($this->parseIni($text_data));
                 $tpl->assign('value="ini_json"', 'value="ini_json" checked="checked"');
+                break;
+
+            case 'url_encoding':
+                $encoding_text_data = urlencode($text_data);
+                $tpl->assign('value="url_encoding"', 'value="url_encoding" checked="checked"');
+                break;
+
+            case 'url_decoding':
+                $encoding_text_data = urldecode($text_data);
+                $tpl->assign('value="url_decoding"', 'value="url_decoding" checked="checked"');
                 break;
 
             default: $encoding_text_data = ''; break;

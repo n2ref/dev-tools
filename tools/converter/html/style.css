@@ -2,6 +2,8 @@
     min-height: 50px;
     max-height: 1000px
 }
+#encoding_from {width:115px}
+#encoding_to {width:115px}
 .btn-selected {
     position: absolute;
     right: 15px;

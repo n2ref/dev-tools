@@ -2,7 +2,6 @@
 
 namespace Classes;
 
-
 /**
  * Class Micro_Templater
  * @see https://github.com/shinji00/Micro_Templater
@@ -48,7 +47,6 @@ class Micro_Templater {
      */
     public function __get($block) {
 
-        if ($this->reassign) $this->startReassign();
         $this->touchBlock($block);
 
         if ( ! array_key_exists($block, $this->_p)) {
@@ -108,6 +106,7 @@ class Micro_Templater {
      * @param string $block
      */
     public function touchBlock($block) {
+        if ($this->reassign) $this->startReassign();
         $this->blocks[$block]['TOUCHED'] = true;
     }
 
@@ -153,7 +152,7 @@ class Micro_Templater {
                 $block_end   = "<!-- END {$block} -->";
 
                 $begin_pos = strpos($html, $block_begin);
-                $end_pos   = strrpos($html, $block_end);
+                $end_pos   = strpos($html, $block_end, $begin_pos);
 
                 if ($begin_pos !== false && $end_pos !== false && $end_pos >= $begin_pos) {
                     $after_html  = substr($html, 0, $begin_pos);
@@ -207,7 +206,7 @@ class Micro_Templater {
                 $html .= '</optgroup>';
 
             } else {
-                $sel = $selected !== null && ((is_array($selected) && in_array((string)$value, $selected)) || (string)$value === (string)$selected)
+                $sel = $selected !== null && ((is_array($selected) && in_array((string)$value, $selected)) || (is_scalar($selected) && (string)$value === (string)$selected))
                     ? 'selected="selected" '
                     : '';
                 $html .= "<option {$sel}value=\"{$value}\">{$option}</option>";
@@ -226,8 +225,9 @@ class Micro_Templater {
      * Clear vars & blocks
      */
     protected function clear() {
-        $this->blocks = array();
-        $this->vars   = array();
+        $this->blocks   = array();
+        $this->vars     = array();
+        $this->reassign = false;
         foreach ($this->_p as $obj) {
             if ($obj instanceof Micro_Templater) {
                 $obj->clear();
@@ -242,6 +242,5 @@ class Micro_Templater {
     protected function startReassign() {
         $this->loop = $this->render();
         $this->clear();
-        $this->reassign = false;
     }
 }
